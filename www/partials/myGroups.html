@@ -1,30 +1,26 @@
-<ion-view title="Training Centers" cache-view="false">
-    <ion-nav-buttons side='secondary'>
-        <button class="button button-clear" ng-show="isAdm" ng-click="addGroup()"><i class="icon ion-plus-round"> </i></button>
-    </ion-nav-buttons>
-    <ion-content>
-        <div class="item" ng-show="groups.length == 0 || groups === undefined">
-            <center>
-                You don't seem to have joined any groups! <br/>
-                Join groups to view them here.
-            </center>
+<ui-view title="" cache-view="false">
+    <button class="button button-dark button-clear text-center" ng-show="isAdm || isMod" ng-click="addGroup()"><i
+        class="glyphicon glyphicon-plus"> </i> Add a Center
+    </button>
+    <div class="item" ng-show="groups.length == 0 || groups === undefined">
+        <div style="text-align: center;">
+            There are no training centers to show right now. <br/>
         </div>
-        <div class="list card" ng-repeat="group in groups">
-            <div class="item item-avatar" ng-click="viewGroup(group.id)">
-                <img id="groupfeed" ng-src="{{serverRoot}}images/CHW_app/{{group.image_folder}}/icon.jpg"/>
-
-                <h2> {{group.name}} </h2>
-            </div>
-            <div class="item tabs tabs-secondary tabs-icon-left">
-                <a class="tab-item" ui-sref="home.group.tasks({id: group.id})">
-                    <i class="icon ion-ios7-people"></i>
-                    Classes
-                </a>
-                <a class="tab-item" ng-click="popOverClick('Edit', group.id)" ng-show="group.isManager || isAdm">
-                    <i class="icon ion-edit"></i>
-                    Edit Training Center Info
-                </a>
-            </div>
+    </div>
+    <div class="list card" ng-repeat="group in groups">
+        <div class="item item-avatar" ng-click="viewGroup(group.id)">
+            <img id="groupfeed" ng-src="{{serverRoot}}images/CHW_app/{{group.image_folder}}/icon.jpg"/>
+            <h2> {{group.name}} </h2>
         </div>
-    </ion-content>
-</ion-view>
+        <div class="item tabs tabs-secondary tabs-icon-left">
+            <a class="tab-item" ui-sref="home.group.tasks({id: group.id})">
+                <i class="icon fa fa-institution"></i>
+                Classes
+            </a>
+            <a class="tab-item" ng-click="popOverClick('Edit', group.id)" ng-show="group.isManager || isAdm">
+                <i class="icon fa fa-edit"></i>
+                Edit Training Center Info
+            </a>
+        </div>
+    </div>
+</ui-view>
