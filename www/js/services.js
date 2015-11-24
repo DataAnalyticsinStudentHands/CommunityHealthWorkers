@@ -364,7 +364,7 @@ vmaServices.factory('vmaTaskService', function (Restangular, $q, $filter, vmaGro
         },
         editTask: function (id, task) {
             task.time = $filter('date')(Date.parse(task.time), 'yyyy-MM-ddTHH:mmZ');
-            return Restangular.all("classes").all(id).doPUT(task);
+            return Restangular.all("classes").all(id).post(task);
         },
         deleteTask: function (tid) {
             return Restangular.all("classes").all(tid).remove();

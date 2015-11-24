@@ -68,8 +68,8 @@
             <li class="item clear item-checkbox" ng-repeat="($index, option) in badgeOptions">
                 <label class="checkbox">
                     <input type='checkbox' checklist-model="newTask.cores" checklist-value="$index">
+                    {{option}}
                 </label>
-                {{option}}
             </li>
         </ul>
         <label class=" item-input">
